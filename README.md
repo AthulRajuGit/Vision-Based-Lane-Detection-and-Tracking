@@ -199,22 +199,7 @@ I applied this distortion correction to the test image using the `cv2.undistort(
 
 Once the camera is calibrated, we can use the camera matrix and distortion coefficients we found to undistort also the test images. Indeed, if we want to study the *geometry* of the road, we have to be sure that the images we're processing do not present distortions. Here's the result of distortion-correction on one of the test images:
 
-<table style="width:100%">
-  <tr>
-    <th>
-      <p align="center">
-           <img src="./img/test_calibration_before.jpg" alt="calibration_before" width="60%" height="60%">
-           <br>Test image before calibration
-      </p>
-    </th>
-    <th>
-      <p align="center">
-           <img src="./img/test_calibration_after.jpg" alt="calibration_after" width="60%" height="60%">
-           <br>Test image after calibration
-      </p>
-    </th>
-  </tr>
-</table>
+
 
 In this case appreciating the result is slightly harder, but we can notice nonetheless some difference on both the very left and very right side of the image.
 
@@ -223,9 +208,7 @@ In this case appreciating the result is slightly harder, but we can notice nonet
 Correctly creating the binary image from the input frame is the very first step of the whole pipeline that will lead us to detect the lane. For this reason, I found that is also one of the most important. If the binary image is bad, it's very difficult to recover and to obtain good results in the successive steps of the pipeline. The code related to this part can be found [here](./binarization_utils.py).
 
 I used a combination of color and gradient thresholds to generate a binary image. In order to detect the white lines, I found that [equalizing the histogram](http://docs.opencv.org/3.1.0/d5/daf/tutorial_py_histogram_equalization.html) of the input frame before thresholding works really well to highlight the actual lane lines. For the yellow lines, I employed a threshold on V channel in [HSV](http://docs.opencv.org/3.2.0/df/d9d/tutorial_py_colorspaces.html) color space. Furthermore, I also convolve the input frame with Sobel kernel to get an estimate of the gradients of the lines. Finally, I make use of [morphological closure](http://docs.opencv.org/3.0-beta/doc/py_tutorials/py_imgproc/py_morphological_ops/py_morphological_ops.html) to *fill the gaps* in my binary image. Here I show every substep and the final output:
-<p align="center">
-  <img src="./img/binarization.png" alt="binarization overview" width="90%" height="90%">
-</p>
+
 
 #### 3. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
 
@@ -247,9 +230,7 @@ Code relating to warping between the two perspective can be found [here](./persp
 
 I verified that my perspective transform was working as expected by drawing the `src` and `dst` points onto a test image and its warped counterpart to verify that the lines appear parallel in the warped image.
 
-<p align="center">
-  <img src="./img/perspective_output.png" alt="birdeye_view" width="90%" height="90%">
-</p>
+
 
 #### 4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
 
@@ -336,14 +317,7 @@ class Line:
 
 The whole processing pipeline, which starts from input frame and comprises undistortion, binarization, lane detection and de-warping back onto the original image, is implemented in function `process_pipeline()` in [`main.py`](./main.py).
 
-The qualitative result for one of the given test images follows:
 
-<p align="center">
-     <img src="./output_images/test2.jpg" alt="output_example" width="60%" height="60%">
-     <br>Qualitative result for test2.jpg
-</p>
-
-All other test images can be found in [./output_images/](./output_images/)
 
 ###Pipeline (video)
 
