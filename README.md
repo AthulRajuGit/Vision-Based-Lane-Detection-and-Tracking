@@ -272,13 +272,13 @@ The qualitative result of this phase is shown here:
     <th>
       <p align="center">
            <img src="./Data/straight_lines1.jpg" alt="sliding_windows_before" width="60%" height="60%">
-           <br>Bird's-eye view (binary)
+           
       </p>
     </th>
     <th>
       <p align="center">
-           <img src="./img/straight_lines2.jpg" alt="sliding_windows_after" width="60%" height="60%">
-           <br>Bird's-eye view (lane detected)
+           <img src="./Data/straight_lines2.jpg" alt="sliding_windows_after" width="60%" height="60%">
+           
       </p>
     </th>
   </tr>
