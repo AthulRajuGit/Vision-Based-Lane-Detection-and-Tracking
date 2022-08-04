@@ -229,7 +229,9 @@ Code relating to warping between the two perspective can be found [here](./persp
 ```
 
 I verified that my perspective transform was working as expected by drawing the `src` and `dst` points onto a test image and its warped counterpart to verify that the lines appear parallel in the warped image.
-
+<p align="center">
+  <img src="./Data/binarization.png" alt="binarization overview" width="90%" height="90%">
+</p>
 
 
 #### 4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
